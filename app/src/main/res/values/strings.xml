@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">SmartBirth</string>
+    <string name="berat_badan">BERAT BADAN</string>
+    <string name="camera">CAMERA</string>
+    <string name="simpan">Simpan</string>
+    <string name="login">LOGIN</string>
+    <string name="smart_birth">SMART BIRTH</string>
+    <string name="masukkan_username">Username</string>
+    <string name="register">REGISTER</string>
+    <string name="password">Password</string>
+    <string name="nik">NIK</string>
+    <string name="nama">Nama</string>
+    <string name="tempat_lahir">Tempat Lahir</string>
+    <string name="no_telpon">No Telpon</string>
+    <string name="alamat">Alamat</string>
+    <string name="rt_rw">RT / RW</string>
+    <string name="dusun">Dusun</string>
+    <string name="batal">BATAL</string>
 </resources>
