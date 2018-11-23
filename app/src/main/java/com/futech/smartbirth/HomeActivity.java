@@ -41,8 +41,14 @@ public class HomeActivity extends AppCompatActivity {
 
                     toolbar.setTitle(R.string.title_news);
                     return true;
+
                 case R.id.navigation_profile:
+
+
+                    fragment = new ProfileFragment();
+                    loadFragment(fragment);
                     toolbar.setTitle(R.string.title_profile);
+
                     return true;
 
                 case R.id.navigation_stats:
@@ -80,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.framelayout, fragment);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
     }
 

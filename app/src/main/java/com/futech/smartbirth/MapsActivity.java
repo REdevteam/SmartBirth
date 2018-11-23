@@ -2,18 +2,26 @@ package com.futech.smartbirth;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.LocationSource;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    double v, v1;
+    MarkerOptions markerOptions;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        //view = findViewById(R.id.view);
+        //view.setVisibility(View.INVISIBLE);
     }
 
 
@@ -39,11 +49,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        v = -34;
+        v1 = 151;
         LatLng sydney = new LatLng(-34, 151);
 
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setMinZoomPreference(15.0f);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+
+        markerOptions = new MarkerOptions();
+        //markerOptions.position(mMap.getCameraPosition().target);
+        //mMap.addMarker(markerOptions);
+
+
+        mMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+            @Override
+            public void onCameraIdle() {
+
+                markerOptions.position(mMap.getCameraPosition().target);
+                mMap.addMarker(markerOptions);
+                Log.d("camera","idle" + mMap.getCameraPosition().target);
+               // view.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        mMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
+            @Override
+            public void onCameraMove() {
+
+                Log.d("camera","move");
+               // view.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+
 
     }
 }
