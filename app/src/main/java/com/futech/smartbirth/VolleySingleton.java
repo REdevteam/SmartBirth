@@ -2,6 +2,7 @@ package com.futech.smartbirth;
 
 import android.content.Context;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
@@ -9,26 +10,34 @@ import com.android.volley.toolbox.Volley;
  * Created by reza on 17/06/18.
  */
 
-public class VolleySingleton {
 
-    private static VolleySingleton instance;
-    private RequestQueue requestQueue;
+public class VolleySingleton {
+    private static VolleySingleton mInstance;
+    private RequestQueue mRequestQueue;
+    private static Context mCtx;
 
     private VolleySingleton(Context context) {
-        requestQueue = Volley.newRequestQueue(context);
-
+        mCtx = context;
+        mRequestQueue = getRequestQueue();
     }
 
-
     public static synchronized VolleySingleton getInstance(Context context) {
-        if (instance == null) {
-            instance = new VolleySingleton(context);
+        if (mInstance == null) {
+            mInstance = new VolleySingleton(context);
         }
-        return instance;
+        return mInstance;
     }
 
     public RequestQueue getRequestQueue() {
-        return requestQueue;
+        if (mRequestQueue == null) {
+            // getApplicationContext() is key, it keeps you from leaking the
+            // Activity or BroadcastReceiver if someone passes one in.
+            mRequestQueue = Volley.newRequestQueue(mCtx.getApplicationContext());
+        }
+        return mRequestQueue;
     }
 
+    public <T> void addToRequestQueue(Request<T> req) {
+        getRequestQueue().add(req);
+    }
 }

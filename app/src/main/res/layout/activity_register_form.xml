@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNik" />
 
     <EditText
-        android:id="@+id/txtTempatLahir"
+        android:id="@+id/txt_ttl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -69,11 +69,11 @@
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTempatLahir"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ttl"
         tools:ignore="LabelFor" />
 
     <EditText
-        android:id="@+id/txtAlamat"
+        android:id="@+id/txt_alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTglLahir" />
 
     <EditText
-        android:id="@+id/txtRt"
+        android:id="@+id/txt_rtrw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAlamat" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_alamat" />
 
     <EditText
         android:id="@+id/txtPhone"
@@ -137,15 +137,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRt" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_rtrw" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="96dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/holo_red_dark"
         android:text="@string/simpan"
         android:textColor="@android:color/background_light"

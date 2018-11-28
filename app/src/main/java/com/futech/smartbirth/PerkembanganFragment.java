@@ -60,6 +60,9 @@ public class PerkembanganFragment extends Fragment implements SwipeRefreshLayout
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perkembangan, container, false);
 
+
+
+
         recyclerView = v.findViewById (R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -96,7 +99,6 @@ public class PerkembanganFragment extends Fragment implements SwipeRefreshLayout
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-
 
                 if(dataModelList.size()!=0) {
                     dataModelList.clear();

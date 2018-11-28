@@ -17,12 +17,10 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment implements View.OnClickListener {
-
-    private ImageView imageView;
+public class StatistikFragment extends Fragment {
 
 
-    public ProfileFragment() {
+    public StatistikFragment() {
         // Required empty public constructor
     }
 
@@ -32,16 +30,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
-        imageView = v.findViewById(R.id.imageViewAddress);
-        imageView.setOnClickListener(this);
+        View v = inflater.inflate(R.layout.fragment_statistik, container, false);
 
+        GraphView graph = (GraphView) v.findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(1, 58.1),
+                new DataPoint(2, 60.8),
+                new DataPoint(3, 72),
+                new DataPoint(4, 73.9),
+                new DataPoint(5, 80)
+        });
+        graph.addSeries(series);
         return v;
     }
 
-    @Override
-    public void onClick(View view) {
-        Intent i = new Intent(getActivity().getApplicationContext(), MapsActivity.class);
-        getActivity().getApplicationContext().startActivity(i);
-    }
 }

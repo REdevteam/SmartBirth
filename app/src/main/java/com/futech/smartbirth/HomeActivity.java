@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_news:
 
-                    fragment = new BeritaFragment();
+                    fragment = new PerkembanganFragment();// BeritaFragment();
                     loadFragment(fragment);
 
 
@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 case R.id.navigation_stats:
 
-                    fragment = new PerkembanganFragment();
+                    fragment = new StatistikFragment();// PerkembanganFragment();
                     loadFragment(fragment);
                     toolbar.setTitle(R.string.title_stats);
                     return true;
@@ -76,6 +76,7 @@ public class HomeActivity extends AppCompatActivity {
 
         toolbar = getSupportActionBar();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         loadFragment(new HomeFragment());

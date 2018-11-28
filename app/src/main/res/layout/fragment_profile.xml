@@ -1,98 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/textViewProfileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:text="NAMA LENGKAP"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextProfileName"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_edittext"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="5dp"
-        android:text="Reza Dwi Agustian"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewProfileName" />
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
-    <EditText
-        android:id="@+id/editTextProfileDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_edittext"
-        android:ems="10"
-        android:inputType="date"
-        android:padding="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewProfileDate" />
+        <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textViewProfileAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:text="ALAMAT"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextProfileName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="10dp">
 
-    <EditText
-        android:id="@+id/editTextProfileAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_edittext"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textPersonName"
-        android:lines="3"
-        android:padding="5dp"
-        android:text="Krandon RT/RW 05/14 Sidomoyo Godean Sleman"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageViewAddress"
-        app:layout_constraintTop_toBottomOf="@+id/textViewProfileAddress" />
+            <TextView
+                android:id="@+id/textViewProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="NAMA LENGKAP"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageViewAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:src="@android:drawable/ic_dialog_map"
-        android:tint="#000000"
-        app:layout_constraintLeft_toRightOf="@+id/editTextProfileAddress"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextProfileAddress" />
+            <EditText
+                android:id="@+id/editTextProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_edittext"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProfileName" />
 
-    <TextView
-        android:id="@+id/textViewProfileDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:text="TANGGAL LAHIR"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextProfileAddress" />
+            <TextView
+                android:id="@+id/textViewProfileAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="ALAMAT"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextProfileName" />
 
-</android.support.constraint.ConstraintLayout>
+            <EditText
+                android:id="@+id/editTextProfileAddress"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_edittext"
+                android:elegantTextHeight="false"
+                android:ems="10"
+                android:gravity="top"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:singleLine="false"
+                android:text="Krandon RT/RW 05/14 Sidomoyo Godean Sleman, Yogyakarta, 55564"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProfileAddress" />
+
+            <TextView
+                android:id="@+id/textViewProfileDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="TANGGAL LAHIR"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextProfileAddress" />
+
+            <EditText
+                android:id="@+id/editTextProfileDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_edittext"
+                android:ems="10"
+                android:inputType="date"
+                android:padding="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProfileDate" />
+
+            <TextView
+                android:id="@+id/textViewProfilePinPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:text="TITIK LOKASI"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextProfileDate" />
+
+            <TextView
+                android:id="@+id/textViewProfilePinPoint2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="#f0f0f0"
+                android:padding="5dp"
+                android:text="Tandai lokasi di dalam peta"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProfilePinPoint" />
+
+            <ImageView
+                android:id="@+id/imageViewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@android:drawable/ic_dialog_map"
+                android:tint="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewProfilePinPoint2"
+                app:layout_constraintRight_toRightOf="@+id/textViewProfilePinPoint2"
+                app:layout_constraintTop_toTopOf="@+id/textViewProfilePinPoint2" />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

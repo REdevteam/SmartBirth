@@ -42,8 +42,6 @@ public class BeritaFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private SwipeRefreshLayout swipeRefreshLayout;
 
 
-
-
     public BeritaFragment() {
         // Required empty public constructor
     }
@@ -87,7 +85,7 @@ public class BeritaFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
         swipeRefreshLayout = v.findViewById(R.id.swipe_container);
 
-        //loadRiwayatData();
+        loadRiwayatData();
 
         return v;
 
@@ -158,7 +156,7 @@ public class BeritaFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     @Override
     public void onRefresh() {
-       // loadRiwayatData();
+        loadRiwayatData();
     }
 
 }

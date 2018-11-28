@@ -54,7 +54,6 @@ public class ListActivity extends AppCompatActivity implements SwipeRefreshLayou
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout = findViewById(R.id.swipe_container);
-
         swipeRefreshLayout.setOnRefreshListener(this);
 
         swipeRefreshLayout.post(new Runnable() {
@@ -63,60 +62,60 @@ public class ListActivity extends AppCompatActivity implements SwipeRefreshLayou
             public void run() {
 
                 swipeRefreshLayout.setRefreshing(true);
-                // Fetching data from server
                 loadRiwayatData();
             }
         });;
-
-
 
     }
 
     public void loadRiwayatData(){
 
-        swipeRefreshLayout.setRefreshing(true);
-        RequestQueue queue = VolleySingleton.getInstance(this).getRequestQueue();
         String url = "https://www.tokosms.com/api/smartbirth/getlist.php";
+        RequestQueue requestQueue = VolleySingleton.getInstance(getApplicationContext()).getRequestQueue();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
+                    public void onResponse(String response) {
+                        if(dataModelList.size()!=0) {
+                            dataModelList.clear();
+                        }
+
+                        try{
+
+                            JSONArray jsonArray=new JSONArray(response);
+
+                            for(int i=0;i<jsonArray.length();i++) {
+
+                                try {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                        String tanggal = jsonObject.getString("tanggal");
+                                        String berat = jsonObject.getString("berat");
+
+                                        dataModelList.add(new DataModel(tanggal,berat));
+
+                                } catch (JSONException e) {
+
+                                    e.printStackTrace();
+
+                                }
+
+                                adapter.notifyDataSetChanged();
+
+                            }
+
+                        }catch (JSONException e2){
+                            e2.printStackTrace();
 
 
-                if(dataModelList.size()!=0) {
-                    dataModelList.clear();
-                }
+                        }
 
-                try {
-                    // Parsing json array response
-                    // loop through each json object
-                    String jsonResponse = "";
-                    for (int i = 0; i < response.length(); i++) {
-
-                        JSONObject kontak = (JSONObject) response
-                                .get(i);
-
-                        String nama = kontak.getString("tanggal");
-                        String nomor = kontak.getString("berat");
-                        //contacts.add(new Contact(nama, nomor));
-
-                        dataModelList.add(new DataModel(nama,nomor));
-                        Log.d("Msg",nama + nomor);
-
+                        swipeRefreshLayout.setRefreshing(false);
                     }
-                    adapter.notifyDataSetChanged();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                swipeRefreshLayout.setRefreshing(false);
-
-            }
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 swipeRefreshLayout.setRefreshing(false);
             }
         })
@@ -124,20 +123,25 @@ public class ListActivity extends AppCompatActivity implements SwipeRefreshLayou
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
                 Map<String, String> params = new HashMap<>();
-                //params.put("token","qwertyuiop");
+                //params.put("token", mPhone);
 
                 return params;
             }
 
         };
-        queue.add(jsonArrayRequest);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,1,1));
+        requestQueue.add(stringRequest);
+        //VolleySingleton.getInstance(this).getRequestQueue().add(stringRequest);
     }
 
 
 
     @Override
     public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
         loadRiwayatData();
+        swipeRefreshLayout.setRefreshing(false);
     }
 }
