@@ -26,6 +26,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="hasil_timbangan">Hasil Timbangan</string>
+    <string name="timbangan">Timbangan</string>
+    <string name="cek">CEK</string>
+    <string name="result">Result</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
