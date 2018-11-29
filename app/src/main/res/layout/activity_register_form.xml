@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNik" />
 
     <EditText
-        android:id="@+id/txt_ttl"
+        android:id="@+id/edittext_ttl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -69,11 +69,11 @@
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ttl"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_ttl"
         tools:ignore="LabelFor" />
 
     <EditText
-        android:id="@+id/txt_alamat"
+        android:id="@+id/edittext_alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTglLahir" />
 
     <EditText
-        android:id="@+id/txt_rtrw"
+        android:id="@+id/edittext_rtrw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_alamat" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_alamat" />
 
     <EditText
         android:id="@+id/txtPhone"
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_rtrw" />
+        app:layout_constraintTop_toBottomOf="@+id/edittext_rtrw" />
 
     <Button
         android:id="@+id/btnRegister"

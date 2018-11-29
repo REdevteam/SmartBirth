@@ -41,7 +41,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(getActivity().getApplicationContext(), MapsActivity.class);
-        getActivity().getApplicationContext().startActivity(i);
+        Intent i = new Intent(this.getActivity(), MapsActivity.class);
+        startActivity(i);
     }
 }

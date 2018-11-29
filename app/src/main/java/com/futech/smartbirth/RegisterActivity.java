@@ -7,14 +7,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -31,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     //private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private EditText mNikView, mNamaView, mAlamatView, mTtlView, mTelpView, mPassView, mDusunView, mrtrwView, mPhoneView;
+    private EditText editTextNik, editTextNama, editTextTtl, editTextAlamat, editTextRtRw, editTextDusun, editTextTelp, editTextPassword;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -42,15 +38,23 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         // Set up the login form.
-        mNikView = (EditText) findViewById(R.id.txt_nik);
-        mNamaView = (EditText) findViewById(R.id.txt_nama);
-        mAlamatView  = (EditText) findViewById(R.id.txt_alamat);
-        mTtlView   = (EditText) findViewById(R.id.txt_ttl);
-        mTelpView    = (EditText) findViewById(R.id.txt_telp);
-        mPassView    = (EditText) findViewById(R.id.txt_password);
-        mDusunView      = (EditText) findViewById(R.id.txt_dusun);
-        mrtrwView       = (EditText) findViewById(R.id.txt_rtrw);
-        mPhoneView = (EditText) findViewById(R.id.phone);
+        editTextNik = (EditText) findViewById(R.id.edittext_nik);
+        editTextNama = (EditText) findViewById(R.id.edittext_nama);
+        editTextTtl = (EditText) findViewById(R.id.edittext_ttl);
+        editTextAlamat = (EditText) findViewById(R.id.edittext_alamat);
+        editTextRtRw = (EditText) findViewById(R.id.edittext_rtrw);
+        editTextDusun = (EditText) findViewById(R.id.edittext_dusun);
+        editTextTelp = (EditText) findViewById(R.id.edittext_telp);
+        editTextPassword = (EditText) findViewById(R.id.edittext_rtrw);
+
+        Button mSignupButton = (Button) findViewById(R.id.signup_button);
+        mSignupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                signup();
+            }
+        });
 
         Button mLoginButton = (Button) findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -63,22 +67,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        Button mSignupButton = (Button) findViewById(R.id.signup_button);
-        mSignupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                attemptLogin();
-            }
-        });
-
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
 
-    private void attemptLogin() {
+    private void signup() {
         //if (mAuthTask != null) {
         //    return;
         //}
@@ -87,35 +82,34 @@ public class RegisterActivity extends AppCompatActivity {
         //mPassView.setError(null);
 
         // Store values at the time of the login attempt.
-        String nik = mPhoneView.getText().toString();
-        String password = mPasswordView.getText().toString();
-        String nik
+        String nik = editTextTelp.getText().toString();
+      //  String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
-
+/*
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+           // mPasswordView.setError(getString(R.string.error_invalid_password));
+            //focusView = mPasswordView;
             cancel = true;
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(phone)) {
-            mPhoneView.setError(getString(R.string.error_field_required));
-            focusView = mPhoneView;
-            cancel = true;
-        } else if (!isPhoneValid(phone)) {
-            mPhoneView.setError(getString(R.string.error_invalid_phone));
-            focusView = mPhoneView;
-            cancel = true;
+      //  if (TextUtils.isEmpty(phone)) {
+      //      mPhoneView.setError(getString(R.string.error_field_required));
+      //      focusView = mPhoneView;
+      //      cancel = true;
+       // } else if (!isPhoneValid(phone)) {
+       //     mPhoneView.setError(getString(R.string.error_invalid_phone));
+        //    focusView = mPhoneView;
+        //    cancel = true;
         }
 
-        if (cancel) {
+        //if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
-            focusView.requestFocus();
+        //    focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
@@ -123,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
             //mAuthTask = new UserLoginTask(phone, password);
             //mAuthTask.execute((Void) null);
             userLogin();
-        }
+        }*/
     }
 
     private boolean isPhoneValid(String phone) {
@@ -237,8 +231,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void userLogin(){
 
-        final String mPhone = mPhoneView.getText().toString();
-        final String mPassword = mPasswordView.getText().toString();
+        final String mPhone = editTextTelp.getText().toString();
+       // final String mPassword = mPasswordView.getText().toString();
 
         String url = "https://www.tokosms.com/api/smartbirth/login.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -263,7 +257,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Map<String, String> params = new HashMap<>();
                 params.put("phone", mPhone);
-                params.put("pass", mPassword);
+           //     params.put("pass", mPassword);
 
                 return params;
             }
